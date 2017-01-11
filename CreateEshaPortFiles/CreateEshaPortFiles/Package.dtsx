@@ -1,0 +1,1521 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/22/2016 3:48:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CP-BURGISS"
+  DTS:CreatorName="CP-BURGISS\Stan Burgiss"
+  DTS:DTSID="{E2165FBA-4C51-47B8-93B4-BE6533CECC00}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="245"
+  DTS:VersionGUID="{4533A7F8-3DEF-46C3-8891-C3E831999413}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Archive]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{CFCD23B7-E5C8-462B-8D59-1333A76465F0}"
+      DTS:ObjectName="Archive">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"C:\\users\\stan burgiss\\documents\\coke\\test\\Archive\\" + (DT_WSTR,4)DATEPART("yyyy",GetDate()) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("mm",GetDate()) ,2) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("dd",GetDate()),2)+ 
+RIGHT("0" + (DT_WSTR,2)DATEPART("hh",GetDate()),2)+ 
+RIGHT("0" + (DT_WSTR,2)DATEPART("minute",GetDate()),2)</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\users\stan burgiss\documents\coke\test\Archive\201701110829" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CP-burgiss\sqlexpress.CokeTest]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68CA326B-2229-4D7E-8958-BFB71AFDD095}"
+      DTS:ObjectName="CP-burgiss\sqlexpress.CokeTest">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CP-burgiss\sqlexpress;Initial Catalog=CokeTest;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cp-burgiss\sqlexpress.CokeTest1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C5B72EDB-4B53-4911-8EEF-67FAD571E00D}"
+      DTS:ObjectName="cp-burgiss\sqlexpress.CokeTest1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cp-burgiss\sqlexpress;Initial Catalog=CokeTest;Integrated Security=True;Application Name=SSIS-Package-{C5B72EDB-4B53-4911-8EEF-67FAD571E00D}cp-burgiss\sqlexpress.CokeTest1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EshaPortFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="CreateTextFileForEshaPort"
+      DTS:DTSID="{183CB383-11FB-41EE-AF17-A46FE93ACEC1}"
+      DTS:ObjectName="EshaPortFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"C:\\Users\\Stan Burgiss\\Documents\\coke\\test\\Test Import Files\\EshaImportFile-"+@[User::Variable] + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\Stan Burgiss\Documents\coke\test\Test Import Files\EshaImportFile-.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SpecNum"
+              DTS:DTSID="{7DD16A2B-172A-4708-AF87-772DC192D5A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="303"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note2"
+              DTS:DTSID="{B23581F8-59A1-4914-BFE4-F7044038BB6F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note3"
+              DTS:DTSID="{00CD5B24-18F5-4281-9981-05A5F9E2D103}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RecipeyKey"
+              DTS:DTSID="{F2B08F3F-745B-4B53-97A7-71AEE2D96B6F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of SpecNum"
+              DTS:DTSID="{91823ADB-B453-4FD2-A69B-1E203D29F5D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="302"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of Note2"
+              DTS:DTSID="{4DB04EB5-E152-4CC7-B289-2BD230705B19}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of Note3"
+              DTS:DTSID="{78114BCA-D948-4635-A2C4-757DD89D6502}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Copy of RecipeyKey"
+              DTS:DTSID="{8A960CA6-0FC3-4C7E-BB5B-09C7A309BF97}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DelayValidation="True"
+      DTS:Description="smtp.coke.com"
+      DTS:DTSID="{FA22357D-18EB-4519-9C18-031519731192}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=nonetcmail.na.cokecce.com;UseWindowsAuthentication=False;EnableSsl=False;Timeout=60000;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SpecNumberExceptionReport]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="SpecNumberExceptionReport"
+      DTS:DTSID="{A84FA975-4900-4328-AC5A-B1A3C04CF614}"
+      DTS:ObjectName="SpecNumberExceptionReport">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"C:\\users\\stan burgiss\\documents\\coke\\test\\ExceptionReports\\Exception_Report_" + (DT_WSTR,4)DATEPART("yyyy",GetDate()) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("mm",GetDate()) ,2) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("dd",GetDate()),2)  + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("hh",GetDate()) ,2)  + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\users\stan burgiss\documents\coke\test\ExceptionReports\Exception_Report_2017011108.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Spec Number"
+              DTS:DTSID="{BDAF0052-0D3F-462A-8369-EE79893462D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Product Name"
+              DTS:DTSID="{4582E10C-7F5A-421D-A3AE-6D6C5516263F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Test Import Files]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9DD4809A-0FCC-4500-9946-FA804882B01F}"
+      DTS:ObjectName="Test Import Files">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\Users\Stan Burgiss\Documents\coke\test\Test Import Files" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Test Import Files 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2322032F-F87E-4D57-ABB1-28A690B0BB54}"
+      DTS:ObjectName="Test Import Files 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\Users\Stan Burgiss\Documents\coke\test\Test Import Files" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{69442969-32AD-47BD-87D1-8E55221B01C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="GetDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{239A9830-B69C-4958-A982-21698A8C1355}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ImportedFile">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6FA5758-4ADA-4B53-91CE-7F6978E8202B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SpecNum"
+      DTS:ReadOnly="True">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3C24515D-27F9-41A8-A2AD-94B8918DC399}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Archive Files"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{E7AAE9DE-EBE7-44E7-BEEB-5816E1F183DF}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archive Files"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CopyDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="{2322032F-F87E-4D57-ABB1-28A690B0BB54}"
+          TaskDestinationPath="{CFCD23B7-E5C8-462B-8D59-1333A76465F0}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Seperate Files For Each Spec Number"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{218E7EB7-62D8-4747-A3AC-BA7C3C78E95A}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Seperate Files For Each Spec Number">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{53D70CD1-B435-42DC-9497-611BCF5698FA}"
+        DTS:ObjectName="{53D70CD1-B435-42DC-9497-611BCF5698FA}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::Variable" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{BC4FEBDD-4511-4710-90D3-46569F616317}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create txt file for import">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input].Columns[SpecNum]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SpecNum"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[SpecNum]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input].Columns[Note2]"
+                          cachedDataType="nText"
+                          cachedName="Note2"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note2]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input].Columns[Note3]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Note3"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note3]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input].Columns[RecipeyKey]"
+                          cachedDataType="r8"
+                          cachedName="RecipeyKey"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[RecipeyKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SpecNum]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SpecNum]"
+                          name="Copy of SpecNum"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[SpecNum]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note2]"
+                          codePage="65001"
+                          dataType="text"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note2]"
+                          name="Copy of Note2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note2]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note3]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note3]"
+                          name="Copy of Note3"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note3]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of RecipeyKey]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of RecipeyKey]"
+                          name="Copy of RecipeyKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[RecipeyKey]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Flat File Destination"
+                  localeId="1033"
+                  name="Flat File Destination">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[EshaPortFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[EshaPortFile]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of Note2]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Copy of Note2"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of Note2]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note2]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of Note3]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Copy of Note3"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of Note3]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Note3]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].Columns[Copy of SpecNum]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Copy of SpecNum"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of SpecNum]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of SpecNum]" />
+                        <inputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].Columns[RecipeyKey]"
+                          cachedDataType="r8"
+                          cachedName="RecipeyKey"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RecipeyKey]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[RecipeyKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RecipeyKey]"
+                          dataType="r8"
+                          name="RecipeyKey" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of SpecNum]"
+                          dataType="wstr"
+                          length="255"
+                          name="Copy of SpecNum" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of Note2]"
+                          codePage="65001"
+                          dataType="text"
+                          name="Copy of Note2" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of Note3]"
+                          dataType="wstr"
+                          length="255"
+                          name="Copy of Note3" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SpecNum]"
+                          dataType="wstr"
+                          length="255"
+                          name="SpecNum" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Note2]"
+                          dataType="nText"
+                          name="Note2" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Note3]"
+                          dataType="wstr"
+                          length="255"
+                          name="Note3" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Copy of RecipeyKey]"
+                          dataType="r8"
+                          name="Copy of RecipeyKey" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[EshaPortalStaging]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from dbo.eshaportalstaging where specnum = ?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::Variable</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{3C24515D-27F9-41A8-A2AD-94B8918DC399};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[CP-burgiss\sqlexpress.CokeTest]"
+                      connectionManagerRefId="Package.ConnectionManagers[CP-burgiss\sqlexpress.CokeTest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[SpecNum]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SpecNum]"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[SpecNum]"
+                          name="SpecNum"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note2]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note2]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note2]"
+                          name="Note2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note3]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note3]"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note3]"
+                          name="Note3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[RecipeyKey]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RecipeyKey]"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].Columns[RecipeyKey]"
+                          name="RecipeyKey"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RecipeyKey]"
+                          dataType="r8"
+                          name="RecipeyKey" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SpecNum]"
+                          dataType="wstr"
+                          length="255"
+                          name="SpecNum" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note2]"
+                          dataType="nText"
+                          name="Note2" />
+                        <externalMetadataColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note3]"
+                          dataType="wstr"
+                          length="255"
+                          name="Note3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SpecNum]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SpecNum]"
+                          name="SpecNum" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note2]"
+                          dataType="nText"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note2]"
+                          name="Note2" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note3]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note3]"
+                          name="Note3" />
+                        <outputColumn
+                          refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RecipeyKey]"
+                          dataType="r8"
+                          lineageId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RecipeyKey]"
+                          name="RecipeyKey" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import.Paths[Data Conversion Output]"
+                  endId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination.Inputs[Flat File Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Create Seperate Files For Each Spec Number\Create txt file for import.Paths[OLE DB Source Output]"
+                  endId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{18EC68C5-61B7-4D3B-B666-BAC0A940CA0E}"
+          DTS:ObjectName="{18EC68C5-61B7-4D3B-B666-BAC0A940CA0E}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::Variable" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Import Files"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{F7F454D0-EFE9-4507-BABE-AEC25E5A48A1}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Import Files"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="DeleteDirectoryContent"
+          TaskSourcePath="{2322032F-F87E-4D57-ABB1-28A690B0BB54}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Exception Report"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F67163C3-15D7-4A09-9F1D-A14DD6C09C7E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Exception Report"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Exception Report\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select getdate() [Date of Exception Report], cosd.specnumber [Spec Number], cosd.Productname [Product Name] from COSD_Data cosd left join BaseFoodUserCode bfuc on cosd.specnumber = bfuc.PrimaryKey where bfuc.primarykey is null</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Exception Report\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CP-burgiss\sqlexpress.CokeTest]"
+                  connectionManagerRefId="Package.ConnectionManagers[CP-burgiss\sqlexpress.CokeTest]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Spec Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Spec Number]"
+                      length="50"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Spec Number]"
+                      name="Spec Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product Name]"
+                      length="50"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product Name]"
+                      name="Product Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date of Exception Report]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date of Exception Report]"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date of Exception Report]"
+                      name="Date of Exception Report"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Spec Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Spec Number" />
+                    <externalMetadataColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Product Name" />
+                    <externalMetadataColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date of Exception Report]"
+                      dataType="dbTimeStamp"
+                      name="Date of Exception Report" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date of Exception Report]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date of Exception Report]"
+                      name="Date of Exception Report" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Spec Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Spec Number]"
+                      name="Spec Number" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product Name]"
+                      name="Product Name" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Exception Report\Spec Number Exception Report"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Spec Number Exception Report">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Exception Report\Spec Number Exception Report.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SpecNumberExceptionReport]"
+                  connectionManagerRefId="Package.ConnectionManagers[SpecNumberExceptionReport]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].Columns[Spec Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Spec Number"
+                      externalMetadataColumnId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].ExternalColumns[Spec Number]"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Spec Number]" />
+                    <inputColumn
+                      refId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].Columns[Product Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Product Name"
+                      externalMetadataColumnId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].ExternalColumns[Product Name]"
+                      lineageId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].ExternalColumns[Spec Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Spec Number" />
+                    <externalMetadataColumn
+                      refId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input].ExternalColumns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Product Name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Exception Report.Paths[OLE DB Source Output]"
+              endId="Package\Exception Report\Spec Number Exception Report.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Exception Report\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get List Of Spec Numbers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FBB91778-DC79-4C72-AD93-75C57EF157BE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get List Of Spec Numbers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C5B72EDB-4B53-4911-8EEF-67FAD571E00D}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT distinct SpecNum &#xA;FROM     EshaPortalStaging&#xA;where specnum is not null"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::Variable" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Run Esha Portal"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Execute Process Task"
+      DTS:DTSID="{FCC44134-4CED-42D7-8AC5-A23598A6B88F}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Run Esha Portal"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Program Files\Windows Media Player\wmplayer.exe"
+          Arguments="-File TestFile.epf DontClose CreationFrom=10/15/2000" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{8B109A07-971C-46BA-927A-C5F88646F971}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="FileAttachments">"C:\\users\\stan burgiss\\documents\\coke\\test\\ExceptionReports\\Exception_Report_" + (DT_WSTR,4)DATEPART("yyyy",GetDate()) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("mm",GetDate()) ,2) + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("dd",GetDate()),2)  + 
+RIGHT("0" + (DT_WSTR,2)DATEPART("hh",GetDate()) ,2) + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{FA22357D-18EB-4519-9C18-031519731192}"
+          SendMailTask:From="stan.burgis@coca-cola.com"
+          SendMailTask:To="stan.burgis@coca-cola.com"
+          SendMailTask:Subject="Picasso Spec Numbers Not Found In Genesis"
+          SendMailTask:Priority="High"
+          SendMailTask:MessageSource="Attached you will find the list of Picasso Spec Numbers that are not found in Genesis." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask">
+          <SendMailTask:Attachments
+            SendMailTask:FileName="C:\users\stan burgiss\documents\coke\test\ExceptionReports\Exception_Report_2017011108.txt" />
+        </SendMailTask:SendMailTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F29B2D5B-B224-4740-ACB8-C41CB6BF0ED1}"
+      DTS:From="Package\Get List Of Spec Numbers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create Seperate Files For Each Spec Number" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C21F9327-3E71-4484-9C35-E03581642646}"
+      DTS:From="Package\Archive Files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Delete Import Files" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{43731E2E-4E99-489B-AF3E-F7C257D4A46F}"
+      DTS:From="Package\Create Seperate Files For Each Spec Number"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Run Esha Portal" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{73415607-85FE-49BE-AE39-D4DE50C22A69}"
+      DTS:From="Package\Run Esha Portal"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Archive Files"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{6B057CBD-AB5B-4583-99DF-7EB03A73C758}"
+      DTS:From="Package\Exception Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Send Mail Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{8BBA0F0E-A546-4ED8-A387-942A0F12A54F}"
+      DTS:From="Package\Exception Report"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Get List Of Spec Numbers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{FA9D1429-B6CB-4910-BF0B-77300F262E1C}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{82652A2B-7756-4319-A7EB-53BE1D143E0D}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Archive Files"
+          TopLeft="242.514289694416,249.210698682252" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import"
+          TopLeft="12.1285774133646,9.12353307532609" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="235.2,104.8"
+          Size="235.2,148"
+          Id="Package\Create Seperate Files For Each Spec Number"
+          TopLeft="468.000007969993,18.8235300123479" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Delete Import Files"
+          TopLeft="468.000007969993,249.210698682252" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Exception Report"
+          TopLeft="17.142854505656,76.0941184449773" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Get List Of Spec Numbers"
+          TopLeft="242.514289694416,71.8117654437424" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Run Esha Portal"
+          TopLeft="17.142854505656,249.210698682252" />
+        <NodeLayout
+          Size="148.8,41.6"
+          Id="Package\Send Mail Task"
+          TopLeft="17.142854505656,141.87379878117" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="441.714289694416,92.7176477280452">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.285718275577,0"
+              Start="0,0"
+              End="18.785718275577,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.785718275577,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="379.314289694416,270.010698682252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.685718275577,0"
+              Start="0,0"
+              End="81.185718275577,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.185718275577,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="585.600007969993,166.823530012348">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-492.057153464337,82.3871686699041"
+              Start="0,0"
+              End="-492.057153464337,74.8871686699041">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.193584334952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.193584334952"
+                    Point2="0,41.193584334952"
+                    Point3="-4,41.193584334952" />
+                  <mssgle:LineSegment
+                    End="-488.057153464337,41.193584334952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-488.057153464337,41.193584334952"
+                    Point2="-492.057153464337,41.193584334952"
+                    Point3="-492.057153464337,45.193584334952" />
+                  <mssgle:LineSegment
+                    End="-492.057153464337,74.8871686699041" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="169.942854505656,270.010698682252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.57143518876,0"
+              Start="0,0"
+              End="65.07143518876,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="65.07143518876,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,20.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="93.942854505656,117.694118444977">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.1796803361927"
+              Start="0,0"
+              End="0,16.6796803361927">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6796803361927" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="175.542854505656,94.7529419443598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.97143518876,0"
+              Start="0,0"
+              End="59.47143518876,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.47143518876,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Create Seperate Files For Each Spec Number\Create txt file for import">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source"
+          TopLeft="197.8,69.2" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Flat File Destination"
+          TopLeft="594.857145289985,74.4470560865832" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import\Data Conversion"
+          TopLeft="389.714286084078,73.0352931223939" />
+        <EdgeLayout
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import.Paths[OLE DB Source Output]"
+          TopLeft="347.4,91.9176465611969">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.314286084078,0"
+              Start="0,0"
+              End="34.814286084078,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.814286084078,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Seperate Files For Each Spec Number\Create txt file for import.Paths[Data Conversion Output]"
+          TopLeft="544.914286084078,94.5411746044885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.9428592059071,0"
+              Start="0,0"
+              End="42.4428592059071,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.4428592059071,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Create Seperate Files For Each Spec Number\Create txt file for import\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Exception Report">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Exception Report\Spec Number Exception Report"
+          TopLeft="332.8,228.8" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Exception Report\OLE DB Source"
+          TopLeft="253.6,78.4" />
+        <EdgeLayout
+          Id="Package\Exception Report.Paths[OLE DB Source Output]"
+          TopLeft="328.4,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.8,108.8"
+              Start="0,0"
+              End="116.8,101.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.4"
+                    Point2="0,54.4"
+                    Point3="4,54.4" />
+                  <mssgle:LineSegment
+                    End="112.8,54.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112.8,54.4"
+                    Point2="116.8,54.4"
+                    Point3="116.8,58.4" />
+                  <mssgle:LineSegment
+                    End="116.8,101.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Exception Report\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
